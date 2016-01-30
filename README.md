@@ -10,5 +10,5 @@ To install the latest development builds directly from GitHub, run this instead:
 ```
 if (!require("devtools"))
   install.packages("devtools")
-devtools::install_github("deman007/aTSA")
+devtools::install_github("debinqiu/aTSA")
 ```
