@@ -49,11 +49,8 @@ ecm <- function(y,X,output = TRUE)
   dy <- diff(y,1)
   dX <- if (m.X > 1) apply(X,2,"diff",1) else diff(X,1)
   res <- residuals(lm(y ~ X - 1))
-  ECM <- res[-1]
+  ECM <- res[-length(res)]
   lm.fit <- lm(dy ~ dX + ECM - 1)
-  lm.sum <- summary(lm.fit)
-  lm.sum$coefficients[m.X + 1,1] <- -lm.sum$coefficients[m.X + 1,1]
-  coefs <- lm.sum$coefficients
-  if (output) print(lm.sum)
-  ecm <- lm.sum
+  if (output) print(summary(lm.fit))
+  ecm <- lm.fit
 }
